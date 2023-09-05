@@ -3,12 +3,13 @@ import { Container, Row, Col, Form, Table } from 'react-bootstrap';
 import IncomeLevelJustification from "./IncomeLevelJustification";
 import { fetchCountryData } from '../api/CountryDataFetcher';
 import Country from '../pojo/Country'; // Import the Country type
-
+import CountryInfoModal from './CountryDetailModal'; // Import the CountryInfoModal component
 
 export function CountryInfoTable() {
     const [countryData, setCountryData] = useState<Country[]>([]);
     const [filteredCountryData, setFilteredCountryData] = useState<Country[]>([]);
     const [searchTerm, setSearchTerm] = useState<string>('');
+    const [selectedCountryCode, setSelectedCountryCode] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -43,6 +44,11 @@ export function CountryInfoTable() {
         UMC: '#5bc0de', // Upper middle income
     };
 
+    const handleCountryClick = (iso2Code: string) => {
+        setSelectedCountryCode(iso2Code);
+    };
+
+    // @ts-ignore
     return (
         <Container>
             <h2>Country Information</h2>
@@ -79,9 +85,10 @@ export function CountryInfoTable() {
                                 key={country.id}
                                 className="country-row"
                                 style={{ backgroundColor: incomeLevelColors[country.incomeLevel.id] }}
+                                onClick={() => handleCountryClick(country.iso2Code)}
                             >
                                 <td>{country.name}</td>
-                                <td>{country.iso2Code}</td>
+                                <td><a href={`#${country.iso2Code}`}>{country.iso2Code}</a></td>
                                 <td>{country.region.value}</td>
                                 <td>{country.incomeLevel.value}</td>
                                 <td>{country.capitalCity}</td>
@@ -93,6 +100,9 @@ export function CountryInfoTable() {
                     </Table>
                 </Col>
             </Row>
+            {selectedCountryCode !== null && (
+                <CountryInfoModal countryCode={selectedCountryCode} show={true} onClose={() => setSelectedCountryCode(null)} />
+            )}
         </Container>
     );
 }
