@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
 import { Container, Navbar, Nav } from 'react-bootstrap';
 import { CountryInfoTable } from "./components/CountryInfoTable";
 import Home from "./pages/Home";
+import {Country} from "./pages/Country";
 
 function App() {
     return (
