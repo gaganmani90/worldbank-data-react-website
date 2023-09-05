@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
 import { Container, Navbar, Nav } from 'react-bootstrap';
-import { CountryInfo } from "./components/CountryInfo";
+import { CountryInfoTable } from "./components/CountryInfoTable";
 
 function App() {
     return (
@@ -24,7 +24,7 @@ function App() {
             <Container>
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/country" element={<CountryInfo />} />
+                    <Route path="/country" element={<CountryInfoTable />} />
                     {/* Add more routes for other categories */}
                 </Routes>
             </Container>
