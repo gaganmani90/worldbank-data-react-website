@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
 import { Container, Navbar, Nav } from 'react-bootstrap';
 import { CountryInfoTable } from "./components/CountryInfoTable";
 import Home from "./pages/Home";
-import {Country} from "./pages/Country";
+import IndicatorTable from "./components/IndicatorTable";
 
 function App() {
     return (
@@ -17,7 +17,7 @@ function App() {
                         <Nav className="mr-auto">
                             <Nav.Link as={Link} to="/" className="nav-link">Home</Nav.Link>
                             <Nav.Link as={Link} to="/country" className="nav-link">Country Info</Nav.Link>
-                            {/* Add more navigation links for other categories */}
+                            <Nav.Link as={Link} to="/indicators" className="nav-link">Indicators</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
@@ -27,7 +27,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/country" element={<CountryInfoTable />} />
-                    {/* Add more routes for other categories */}
+                    <Route path="/indicators" element={<IndicatorTable />} />
                 </Routes>
             </Container>
         </Router>

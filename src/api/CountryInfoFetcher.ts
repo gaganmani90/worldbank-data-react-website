@@ -2,7 +2,7 @@ import axios from "axios";
 import Country from "../pojo/Country";
 
 async function getCountryInfo(countryCode: string): Promise<Country | null> {
-    const apiUrl = `http://api.worldbank.org/V2/countries/${countryCode}?format=json`;
+    const apiUrl = `/countries/${countryCode}?format=json`;
 
     try {
         const response = await axios.get(apiUrl);
