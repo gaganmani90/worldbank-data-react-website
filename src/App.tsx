@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
 import { Container, Navbar, Nav } from 'react-bootstrap';
 import { CountryInfoTable } from "./components/CountryInfoTable";
+import Home from "./pages/Home";
 
 function App() {
     return (
@@ -32,13 +33,5 @@ function App() {
     );
 }
 
-function Home() {
-    return (
-        <div>
-            <h2>Welcome to World Data</h2>
-            <p>This is the home page of my app.</p>
-        </div>
-    );
-}
 
 export default App;
